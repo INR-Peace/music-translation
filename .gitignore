@@ -99,9 +99,7 @@ ENV/
 
 # mypy
 .mypy_cache/
-checkpoints
 results
 notebooks/.build_dir/
 src/.build_dir/
 .build_dir
-musicnet/
