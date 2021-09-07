@@ -220,7 +220,7 @@ setup(
                       ],
                       extra_compile_args={
                           "cxx": ["-std=c++14"],
-                          "nvcc": ["-arch=sm_70", "-std=c++14", "--use_fast_math",
+                          "nvcc": ["-arch=sm_61", "-std=c++14", "--use_fast_math",
                                    "-maxrregcount", "128", "--ptxas-options=-v",
                                    "--expt-relaxed-constexpr", "-D__GNUC__=6"]
                       }
