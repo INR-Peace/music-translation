@@ -8,13 +8,15 @@
 set -e -x
 
 CODE=src
-DATA=musicnet/preprocessed
+DATA=musicnet/preprocessed 
+#DATA=kaggle/preprocessd
 
 EXP=musicnet
+#EXP=kaggle
 export MASTER_PORT=29500
 
 python ${CODE}/train.py \
-    --data ${DATA}/Bach_Solo_Cello  \
+    --data ${DATA}/Bach_Solo_Cello  \ #우리가 원하는 장르
            ${DATA}/Beethoven_Solo_Piano \
            ${DATA}/Cambini_Wind_Quintet \
            ${DATA}/Bach_Solo_Piano \
