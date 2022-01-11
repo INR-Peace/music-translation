@@ -58,10 +58,20 @@ def main():
         ['String Quartet', 'Beethoven'],
         ['Wind Quintet', 'Cambini'],
     ]
+    
+   '''
+   domains = [
+        ['disco'],
+        ['jazz'],
+        ['country'],
+        ['hiphop'],
+   ]
+   '''
 
     db = pandas.read_csv(src / 'musicnet_metadata.csv')
     traindir = src / 'train_data'
     testdir = src / 'test_data'
+    datadir = src / 'data'
 
     for (ensemble, composer) in domains:
         fid_list = db[(db["composer"] == composer) & (db["ensemble"] == ensemble)].id.tolist()
@@ -73,11 +83,28 @@ def main():
             os.mkdir(domaindir)
 
         for fid in fid_list:
-            fname = traindir / f'{fid}.wav'
+            fname = traindir / f'{fid}.wav' # traindir = src / 'train_data'
             if not fname.exists():
-                fname = testdir / f'{fid}.wav'
+                fname = testdir / f'{fid}.wav' # testdir = src / 'test_data'
 
             copy(str(fname), str(domaindir))
+            
+    '''
+    for title in domains:
+        fid_list = db[(db["genre"] == genre)].id.tolist()
+        total_time = db["genre"] == genre).seconds.tolist()
+        
+        print(f"Total time for {genre} is: {total_time} seconds")
+
+        domaindir = dst / f"{genre}" #dst = args.output 
+        if not os.path.exists(domaindir): 
+            os.mkdir(domaindir)
+
+        for fid in fid_list:
+            fname = datadir / f'{fid}.wav'
+
+            copy(str(fname), str(domaindir))
+    '''
 
 
 if __name__ == '__main__':
